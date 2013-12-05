@@ -8,8 +8,8 @@ test_doc = {
     theme: {
 	root_style: {
 	    align: "left",
-	    font: "PT Serif",
-	    font_color: "#444",
+	    font: "Georgia",
+	    font_color: "#ff3333",
 	    text_indent: {distance: 1, unit: 'em'},
 	    margin_left: {distance: 0, unit: 'em'},
 	    margin_top: {distance: 0, unit: 'em'},
@@ -265,10 +265,10 @@ init_canvas = function(C, doc) {
 	    var words_width = line.map(function(word) { return word.width; })
 		.reduce(function(a,b) { return a + b; });
 
-	    var offset = start_x + 
+	    var offset = start_x + // TODO: make this make more sense...
 		(style.align != "center"
 			  ? (style.align == "right" 
-			     ? (line_width - (words_width + (word_spacing * (line.length - 1))))
+			     ? (line_width - (words_width + (word_spacing * (line.length - 1)))) //right
 			     : (i == 0 ? text_indent : 0)) // left & justified
 		 : (line_width - (words_width + (word_spacing * (line.length - 1)))) / 2); // center
 
@@ -283,8 +283,7 @@ init_canvas = function(C, doc) {
 
 	    y += height * style.leading; }
 		
-	y += (height * style.leading) + C.calc_distance(style.margin_bottom, font_size)
-	+ C.calc_distance(style.padding_bottom, font_size);
+	y += C.calc_distance(style.margin_bottom, font_size) + C.calc_distance(style.padding_bottom, font_size);
 	return {y: y}}
 
     C.block_type_style = function (blocktype) {
