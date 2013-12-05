@@ -561,6 +561,9 @@ function on_unfocus(what) {
     return make_event(function() {
 	focus = false; });}
 
+Array.prototype.rest = function() {
+    return this.slice(1); }
+
 function onloader() {
     var onload = new Array();
     function add_onload(fn) {
@@ -568,6 +571,12 @@ function onloader() {
     function run() {
 	onload.map(function (fn) {fn.call(fn); }); }
     return {'add' : add_onload, 'run' : run}; }
+
+Array.prototype.max = function() {
+    var m = this[0];;
+    for (i = 0; i < this.length; i++) {
+	if (this[i] > m) { m = this[i]; }}
+    return m; }
 
 W.form_inputs = [];
 W.form_inputs["action"] = function(row, form) {
