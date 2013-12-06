@@ -16,3 +16,211 @@
 
 
 </template>
+
+
+<template name="style_editor">
+  <div class="#style-editor" id="{{id}}">
+    <input type="text" class="dropdown edit block-type-identifier" id="block-type-{{id}}"
+	   value="paragraph" />
+    <div class="style-editor-body">
+      <div class="left-side">
+	<canvas class="small-sample" id="sample-for-{{id}}"></canvas>
+	<div class="font-row-one">
+	  <div class="font-label">Font:</div>
+	  <input type="text" class="dropdown edit font-name" id="font-name-{{id}}"
+		 name="font" />
+	  <div class="distance-input" id="font-size-{{id}}">
+	    <input type="number" class="distance" id="font-size-distance-{{id}}" value="16" />
+	    <select id="font-size-unit-{{id}}">
+	      <option>pt</option>
+	      <option>in</option>
+	      <option>em</option>
+	    </select>
+	  </div>
+	</div>
+	<div class="font-row-two">
+	  <input class="toggle-button bold" type="image" id="font-style-bold-{{id}}" value="false" />
+	  <input class="toggle-button italics" type="image" id="font-style-italics-{{id}}" value="false" />
+	  <input class="toggle-button underline" type="image" id="font-style-underline-{{id}}" value="false" />
+	  <input class="toggle-button allcaps" type="image" id="font-style-allcaps-{{id}}" value="false" />
+	  <input class="toggle-button smallcaps" type="image" id="font-style-smallcaps-{{id}}" value="false" />
+	  <input class="toggle-button strikethrough" type="image" id="font-style-strikethrough-{{id}}" value="false" />
+	  <input class="toggle-button subscript" type="image" id="font-style-subscript-{{id}}" value="false" />
+	  <input class="toggle-button superscript" type="image" id="font-style-superscript-{{id}}" value="false" />
+	  <input class="toggle-button ligatures" type="image" id="font-style-ligatures-{{id}}" value="false" />
+	</div>
+      </div>
+      <div class="right-side">
+	<div class="four-sides-distances">
+	  <div class="label">margin:</div>
+	  <div class="input-row">
+	    <div class="distance-input" id="margin-left-{{id}}">
+	      <input type="number" class="distance" id="margin-left-distance-{{id}}" value="16" />
+	      <select id="margin-left-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	    <div class="distance-input" id="margin-right-{{id}}">
+	      <input type="number" class="distance" id="margin-right-distance-{{id}}" value="16" />
+	      <select id="margin-right-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	    <div class="distance-input" id="margin-top-{{id}}">
+	      <input type="number" class="distance" id="margin-top-distance-{{id}}" value="16" />
+	      <select id="margin-top-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	    <div class="distance-input" id="margin-bottom-{{id}}">
+	      <input type="number" class="distance" id="margin-bottom-distance-{{id}}" value="16" />
+	      <select id="margin-bottom-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	</div>
+	<div class="four-sides-legend">
+	  <div class="four-sides-legend-item">
+	    L <img src="four-sides-legend-icon-L" />
+	  </div>
+	  <div class="four-sides-legend-item">
+	    R <img src="four-sides-legend-icon-R" />
+	  </div>
+	  <div class="four-sides-legend-item">
+	    T <img src="four-sides-legend-icon-T" />
+	  </div>
+	  <div class="four-sides-legend-item">
+	    B <img src="four-sides-legend-icon-B" />
+	  </div>
+	</div>
+	<div class="four-sides-distances">
+	  <div class="label">padding:</div>
+	  <div class="input-row">
+	    <div class="distance-input" id="padding-left-{{id}}">
+	      <input type="number" class="distance" id="padding-left-distance-{{id}}" value="16" />
+	      <select id="padding-left-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	    <div class="distance-input" id="padding-right-{{id}}">
+	      <input type="number" class="distance" id="padding-right-distance-{{id}}" value="16" />
+	      <select id="padding-right-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	    <div class="distance-input" id="padding-top-{{id}}">
+	      <input type="number" class="distance" id="padding-top-distance-{{id}}" value="16" />
+	      <select id="padding-top-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>		
+	    <div class="distance-input" id="padding-bottom-{{id}}">
+	      <input type="number" class="distance" id="padding-bottom-distance-{{id}}" value="16" />
+	      <select id="padding-bottom-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	</div>
+	<div class="align-row right-side-row">
+	  <div class="label">align:</div>
+	  <input class="image-button align-left" type="radio" name="align-{{id}}" id="align-left-{{id}}" />
+	  <input class="image-button align-center" type="radio" name="align-{{id}}" id="align-center-{{id}}" />
+	  <input class="image-button align-right" type="radio" name="align-{{id}}" id="align-right-{{id}}" />
+	  <input class="image-button align-justified" type="radio" name="align-{{id}}" id="align-justified-{{id}}" />
+	</div>
+	<div class="align-row right-side-row">
+	  <div class="label">indent:</div>
+	  <div class="distance-input" id="text-indent-{{id}}">
+	    <input type="number" class="distance" id="text-indent-distance-{{id}}" value="16" />
+	    <select id="text-indent-unit-{{id}}">
+	      <option>pt</option>
+	      <option>in</option>
+	      <option>em</option>
+	    </select>
+	  </div>	
+	</div>
+      </div>
+      <div class="bottom-section">
+	<div class="left-side">
+	  <div class="line-height-row left-side-row">
+	    <div class="label">line height:</div>
+	    <div class="distance-input" id="line-height-{{id}}">
+	      <input type="number" class="distance" id="line-height-distance-{{id}}" value="16" />
+	      <select id="line-height-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	  <div class="align-row left-side-row">
+	    <div class="label">character spacing:</div>
+	    <div class="distance-input" id="character-spacing-{{id}}">
+	      <input type="number" class="distance" id="character-spacing-distance-{{id}}" value="16" />
+	      <select id="character-spacing-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	  <div class="baseline-shift-row left-side-row">
+	    <div class="label">baseline shift:</div>
+	    <div class="distance-input" id="baseline-shift-{{id}}">
+	      <input type="number" class="distance" id="baseline-shift-distance-{{id}}" value="16" />
+	      <select id="baseline-shift-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	  
+	</div>
+	<div class="right-side">
+	  <div class="vertical-scale-row right-side-row">
+	    <div class="label">vertical scale:</div>
+	    <div class="distance-input" id="vertical-scale-{{id}}">
+	      <input type="number" class="distance" id="vertical-scale-distance-{{id}}" value="16" />
+	      <select id="vertical-scale-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	  <div class="horizontal-scale-row right-side-row">
+	    <div class="label">horizontal scale:</div>
+	    <div class="distance-input" id="horizontal-scale-{{id}}">
+	      <input type="number" class="distance" id="horizontal-scale-distance-{{id}}" value="16" />
+	      <select id="horizontal-scale-unit-{{id}}">
+		<option>pt</option>
+		<option>in</option>
+		<option>em</option>
+	      </select>
+	    </div>	
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</template>
+

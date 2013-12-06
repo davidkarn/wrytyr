@@ -268,7 +268,8 @@ init_canvas = function(C, doc) {
 	    var offset = start_x + // TODO: make this make more sense...
 		(style.align != "center"
 			  ? (style.align == "right" 
-			     ? (line_width - (words_width + (word_spacing * (line.length - 1)))) //right
+			     ? (line_width - (words_width + 
+					      (word_spacing * (line.length - 1)))) //right
 			     : (i == 0 ? text_indent : 0)) // left & justified
 		 : (line_width - (words_width + (word_spacing * (line.length - 1)))) / 2); // center
 
