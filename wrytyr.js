@@ -351,6 +351,13 @@ prepare_doc = function(doc) {
 
     test_doc = my_docs[0];
 
+Handlebars.registerHelper('distance', function(distance, name, id) {
+	return Template.distance({name: name, 
+		    id: id, 
+		    distance: distance,
+		    is_pt: (distance.unit == 'pt'),
+		    is_em: (distance.unit == 'em'),
+		    is_in: (distance.unit == 'in')}); });
 
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
