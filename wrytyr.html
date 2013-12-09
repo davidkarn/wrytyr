@@ -3,7 +3,9 @@
 </head>
 
 <body>
-<canvas id="wysiwym" width="999px" height="1000px"></canvas>
+ {{> theme-ribbon}}
+ <canvas id="wysiwym" width="999px" height="1000px"></canvas>
+ {{> style_editor}}
 <script>
 </script>
 </body>
@@ -19,7 +21,7 @@
 
 
 <template name="style_editor">
-  <div class="#style-editor" id="{{id}}">
+  <div id="style-editor" id="{{id}}">
     <input type="text" class="dropdown edit block-type-identifier" id="block-type-{{id}}"
 	   value="paragraph" />
     <div class="style-editor-body">
@@ -39,15 +41,15 @@
 	  </div>
 	</div>
 	<div class="font-row-two">
-	  <input class="toggle-button bold" type="image" id="font-style-bold-{{id}}" value="false" />
-	  <input class="toggle-button italics" type="image" id="font-style-italics-{{id}}" value="false" />
-	  <input class="toggle-button underline" type="image" id="font-style-underline-{{id}}" value="false" />
-	  <input class="toggle-button allcaps" type="image" id="font-style-allcaps-{{id}}" value="false" />
-	  <input class="toggle-button smallcaps" type="image" id="font-style-smallcaps-{{id}}" value="false" />
-	  <input class="toggle-button strikethrough" type="image" id="font-style-strikethrough-{{id}}" value="false" />
-	  <input class="toggle-button subscript" type="image" id="font-style-subscript-{{id}}" value="false" />
-	  <input class="toggle-button superscript" type="image" id="font-style-superscript-{{id}}" value="false" />
-	  <input class="toggle-button ligatures" type="image" id="font-style-ligatures-{{id}}" value="false" />
+	  <input class="toggle-button bold" type="image" id="font-style-bold-{{id}}" value="" />
+	  <input class="toggle-button italics" type="image" id="font-style-italics-{{id}}" value="" />
+	  <input class="toggle-button underline" type="image" id="font-style-underline-{{id}}" value="" />
+	  <input class="toggle-button allcaps" type="image" id="font-style-allcaps-{{id}}" value="" />
+	  <input class="toggle-button smallcaps" type="image" id="font-style-smallcaps-{{id}}" value="" />
+	  <input class="toggle-button strikethrough" type="image" id="font-style-strikethrough-{{id}}" value="" />
+	  <input class="toggle-button subscript" type="image" id="font-style-subscript-{{id}}" value="" />
+	  <input class="toggle-button superscript" type="image" id="font-style-superscript-{{id}}" value="" />
+	  <input class="toggle-button ligatures" type="image" id="font-style-ligatures-{{id}}" value="" />
 	</div>
       </div>
       <div class="right-side">
@@ -238,12 +240,11 @@
       Styles
       <input type="image" id="add-theme-style-button" />
     </div>
-...    
+
     <div id="default-style" class="theme-style">
       <div class="style-header">
 	default
       </div>
     </div>
-
   </div>
 </template>
