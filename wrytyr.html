@@ -3,8 +3,13 @@
 </head>
 
 <body>
+<div id="ribbon" width="28em">
+
  {{> theme-ribbon}}
- <canvas id="wysiwym" width="999px" height="1000px"></canvas>
+</div>
+<div id="canvas_cell" >
+ <canvas id="wysiwym" width="1000px" height="2000px"></canvas>
+</div>
  {{> style_editor}}
 <script>
 </script>
@@ -22,6 +27,7 @@
 
 <template name="style_editor">
   <div id="style-editor" id="{{id}}">
+<div class="close-button">X</div>
     <input type="text" class="dropdown edit block-type-identifier" id="block-type-{{id}}"
 	   value="paragraph" />
     <div class="style-editor-body">
@@ -148,7 +154,7 @@
 	  <input class="image-button align-right" type="radio" name="align-{{id}}" id="align-right-{{id}}" />
 	  <input class="image-button align-justified" type="radio" name="align-{{id}}" id="align-justified-{{id}}" />
 	</div>
-	<div class="align-row right-side-row">
+	<div class="indent-row right-side-row">
 	  <div class="label">indent:</div>
 	  <div class="distance-input" id="text-indent-{{id}}">
 	    <input type="number" class="distance" id="text-indent-distance-{{id}}" value="16" />
@@ -199,7 +205,7 @@
 	</div>
 	<div class="right-side">
 	  <div class="vertical-scale-row right-side-row">
-	    <div class="label">vertical scale:</div>
+	    <div class="label row-label">vertical scale:</div>
 	    <div class="distance-input" id="vertical-scale-{{id}}">
 	      <input type="number" class="distance" id="vertical-scale-distance-{{id}}" value="16" />
 	      <select id="vertical-scale-unit-{{id}}">
@@ -210,7 +216,7 @@
 	    </div>	
 	  </div>
 	  <div class="horizontal-scale-row right-side-row">
-	    <div class="label">horizontal scale:</div>
+	    <div class="label row-label">horizontal scale:</div>
 	    <div class="distance-input" id="horizontal-scale-{{id}}">
 	      <input type="number" class="distance" id="horizontal-scale-distance-{{id}}" value="16" />
 	      <select id="horizontal-scale-unit-{{id}}">

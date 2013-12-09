@@ -4,14 +4,31 @@ background-color: #ddd;
 font-family: myriad pro;
 color: #333
 }
-canvas {background-color: #eee; margin: 4em;}
+td, tr, table { vertical-align: top: }
+#canvas_cell {
+float: right;  padding: 0; margin: 0; background-color: #ccc; width: 66em;height:100em;}
+#ribbon {
+width: 25em;
+float: left;
+overflow:hidden;
+top: 0;
+position: absolute;
+}
 
+canvas {background-color: #eee; width: 1000px;height: 2000px;}
+#style-editor .close-button {
+width: 1em;
+padding: 0.25em; 
+
+height: 1em;
+position: absolute; right: 0; top: 0; }
 #style-editor {
  position: fixed;
+font-weight: bold;
 left: 4em;
 top: 2em;
-background-color: rgba(57, 133, 250, 0.5);	
-color: #444;
+background-color: rgba(57, 133, 250, 0.7);	
+color: #222;
 font-size: 12pt;
 width:54em;
 }
@@ -37,7 +54,7 @@ width: 6em;float:left;
 }
 
 .four-sides-distances { 
-clear:right;
+
 margin-bottom: 1.8em;; }
 .four-sides-distances .label { 
 margin-bottom: 0.2em;
@@ -84,3 +101,14 @@ float: left; }
  width: 2.7em; height: 3em; margin-right: 1em;
  border: 0;padding: 0; background: none;
  background-color: rgba(0,0,0,0.33); }
+
+
+.align-row {
+padding-top: 1.8em;margin-bottom: 0;
+padding-bottom: 0; }
+.right-side-row .label, .left-side-row .label, .row-label {
+width: 10em;
+float: left; }	
+.right-side-row, left-side-row {
+padding; 0;
+margin-bottom: 1.5em; }
