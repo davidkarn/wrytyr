@@ -4,21 +4,57 @@ background-color: #ddd;
 font-family: myriad pro;
 color: #333
 }
+* {
+margin: 0; padding: 0;}
 td, tr, table { vertical-align: top: }
 #canvas_cell {
 float: right;  padding: 0; margin: 0; background-color: #ccc; width: 66em;height:100em;}
 #ribbon {
-width: 25em;
-float: left;
-overflow:hidden;
-top: 0;
+height:100%;
+background-color: #f9f9f9;
+padding: 1em;
+}
+#ribbon #theme-selector {
+width: 9.5em;
+padding: 0.5em;
+padding-bottom: 0.33em;
+margin-bottom: 1em;
+font-weight: bold;
+font-size: 18pt;
+background-color: rgba(0,0,0,0.2);
+}
+.theme-styles-headers {
+font-size: 12pt;
+border-bottom: 0.08em solid #DDD;
+margin-bottom: 1em;
+margin-top: 1.8em;
+}
+#add-theme-style-button { 
+float: right;
+}
+.theme-style {
+width: 18em;
+padding: 0.5em;
+padding-bottom: 0.33em;
+margin-bottom: 1em;
+font-size: 10pt;
+background-color: rgba(0,0,0,0.1);
+}
+#ribbon-shadow {
 position: absolute;
+background-color: #bbb;
+padding-left: 0.22em;
+padding-right: 0.22em;
+height: 2000px;
+float: left;
+width: 18em;
 }
 
 canvas {background-color: #eee; width: 1000px;height: 2000px;}
 #style-editor .close-button {
 width: 1em;
-padding: 0.25em; 
+font-size: 1.4em;
+padding: 0.6em; 
 
 height: 1em;
 position: absolute; right: 0; top: 0; }
@@ -112,3 +148,10 @@ float: left; }
 .right-side-row, left-side-row {
 padding; 0;
 margin-bottom: 1.5em; }
+.bottom-section {
+position: relative;
+padding: 1em;
+margin-top: 17em;
+left: -1em;
+height:10em;
+background-color: rgba(0,0,0,0.2); }	
