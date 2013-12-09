@@ -1,56 +1,3 @@
-test_doc = {
-    margin_top: {distance: 0.75, unit: 'in'},
-    margin_left: {distance: 0.75, unit: 'in'},
-    margin_right: {distance: 0.75, unit: 'in'},
-    margin_bottom: {distance: 0.75, unit: 'in'},
-    paper_width: {distance: 8.5, unit: 'in'},
-    paper_height: {distance: 11, unit: 'in'},
-    theme: {
-	root_style: {
-	    align: "left",
-	    font: "Georgia",
-	    font_color: "#ff3333",
-	    text_indent: {distance: 1, unit: 'em'},
-	    margin_left: {distance: 0, unit: 'em'},
-	    margin_top: {distance: 0, unit: 'em'},
-	    margin_right: {distance: 0, unit: 'em'},
-	    margin_bottom: {distance: 1, unit: 'em'},
-	    padding_left: {distance: 0, unit: 'em'},
-	    padding_top: {distance: 0, unit: 'em'},
-	    padding_right: {distance: 0, unit: 'em'},
-	    padding_bottom: {distance: 0, unit: 'em'},
-	    word_spacing: {distance: 0.22, unit: 'em'},
-	    sentence_spacing: {distance: 0.28, unit: 'em'},
-	    leading: 1.6,
-	    tracking: 0,
-	    ligatures: true,
-	    font_size: {distance: 14, unit: 'pt'},
-	    text_style: {
-		smallcaps: false,
-		allcaps: false,
-		bold: false,
-		italicized: false,
-		underlined: false,
-		strikethrough: false,
-		subscript: false,
-		superscript: false},
-	    baseline_shift: {distance: 0, unit: 'pt'},
-	    scale_vertical: 100,
-	    scale_horizantal: 100},
-	styles: {
-	    heading: {text_indent: {distance: 1, unit: 'em'},
-		      font_color: "#111111",
-		      font_size: {distance: 18, unit: 'pt'}}}},
-    body: [
-{type: 'heading',
- body: ["This", "is", "a", {type: 'italics', body: ["Heading"]},
-	"I've", "noticed", "that", "the", "caches", "sometimes", "don't", "eet", "cleared", "out", "rieht", "awae.", "Try", "restarting", "the", "meteor", "server,", "and", "flushing", "the", "client", "browser", "history.", "Deleting", "the", ".meteor/local/build", "directory", "also", "sometimes", "helps.", "Moral", "of", "the", "story:", "removing", "a", "package", "is", "an", "expensive", "event,", "and", "requires", "some", "extra", "work."]},
-{type: 'paragraph',
- body: ["By:", "David Karn"]},
-{type: 'paragraph',
-	body: ["Blah", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"]},
-{type: 'paragraph',
-	body: ["Blah", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"]}]};
 /*
 var style_schema = {align: ['right', 'left', 'center'],
 		    font: url,
@@ -325,6 +272,85 @@ init_canvas = function(C, doc) {
     C.draw_doc(); 
 
     return C; };
+
+
+Themes = new Meteor.Collection("themes");
+Documents = new Meteor.Collection("documents");
+Styles = new Meteor.Collection("styles");
+
+Styles.insert({
+	align: "left",
+	    font: "Georgia",
+	    font_color: "#ff3333",
+	    text_indent: {distance: 1, unit: 'em'},
+	    margin_left: {distance: 0, unit: 'em'},
+	    margin_top: {distance: 0, unit: 'em'},
+	    margin_right: {distance: 0, unit: 'em'},
+	    margin_bottom: {distance: 1, unit: 'em'},
+	    padding_left: {distance: 0, unit: 'em'},
+	    padding_top: {distance: 0, unit: 'em'},
+	    padding_right: {distance: 0, unit: 'em'},
+	    padding_bottom: {distance: 0, unit: 'em'},
+	    word_spacing: {distance: 0.22, unit: 'em'},
+	    sentence_spacing: {distance: 0.28, unit: 'em'},
+	    leading: 1.6,
+	    tracking: 0,
+	    ligatures: true,
+	    font_size: {distance: 14, unit: 'pt'},
+	    text_style: {
+		smallcaps: false,
+		allcaps: false,
+		bold: false,
+		italicized: false,
+		underlined: false,
+		strikethrough: false,
+		subscript: false,
+		superscript: false},
+	    baseline_shift: {distance: 0, unit: 'pt'},
+	    scale_vertical: 100,
+	    scale_horizantal: 100});
+Styles.insert({text_indent: {distance: 1, unit: 'em'},
+	    font_color: "#111111",
+	    font_size: {distance: 18, unit: 'pt'}});
+
+my_styles = Styles.find({}).fetch();
+
+Themes.insert({root_style_id: my_styles[0]._id,
+	    styles_ids: {heading: my_styles[1]._id}});
+
+my_themes = Themes.find({}).fetch();
+
+Documents.insert({
+    margin_top: {distance: 0.75, unit: 'in'},
+    margin_left: {distance: 0.75, unit: 'in'},
+    margin_right: {distance: 0.75, unit: 'in'},
+    margin_bottom: {distance: 0.75, unit: 'in'},
+    paper_width: {distance: 8.5, unit: 'in'},
+    paper_height: {distance: 11, unit: 'in'},
+    theme_id: my_themes[0]._id,
+    body: [
+{type: 'heading',
+ body: ["This", "is", "a", {type: 'italics', body: ["Heading"]},
+	"I've", "noticed", "that", "the", "caches", "sometimes", "don't", "eet", "cleared", "out", "rieht", "awae.", "Try", "restarting", "the", "meteor", "server,", "and", "flushing", "the", "client", "browser", "history.", "Deleting", "the", ".meteor/local/build", "directory", "also", "sometimes", "helps.", "Moral", "of", "the", "story:", "removing", "a", "package", "is", "an", "expensive", "event,", "and", "requires", "some", "extra", "work."]},
+{type: 'paragraph',
+	body: ["By:", "David Karn"]},
+{type: 'paragraph',
+	body: ["Blah", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"]},
+{type: 'paragraph',
+	body: ["Blah", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"]}]});
+
+my_docs = Documents.find({}).fetch();
+
+prepare_doc = function(doc) {
+    doc.theme = Themes.find({_id: doc.theme_id}).fetch()[0];
+    doc.theme.root_style = Styles.find({_id: doc.theme.root_style_id}).fetch()[0];
+    doc.theme.styles = {};
+    for (type in doc.theme.styles_ids) {
+	doc.theme.styles[type] = Styles.find({_id: doc.theme.styles_ids[type]}).fetch()[0]} 
+    return doc; }
+
+    test_doc = my_docs[0];
+
 
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
